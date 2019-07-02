@@ -62,3 +62,4 @@ b = a - 10
 print(a > b)
 
 # Exercise 14: What Boolean will be the output of the following?
+# What Boolean will be the output of the following: 12 != 12
