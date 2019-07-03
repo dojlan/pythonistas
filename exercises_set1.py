@@ -120,3 +120,5 @@ for num in range(len(st)):
         Lowercase += 1
 print(Uppercase)
 print(Lowercase)
+
+# Completion of exercises
