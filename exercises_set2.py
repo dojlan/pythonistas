@@ -55,10 +55,10 @@ for keys, values in char.items():
 
 # Exercise 9:
 # 1.Print out the values of each city’s index in the superdict dictionary below.
-# Note that the keys of the outer dictionary corresponds to the index.
+# Note that the keys of the outer dictionary correspond to the index.
 # 2. Print out each city name in the dictionary
-# 3. What is the out put of this code:
-print(" two of the cities in the list are {0} and {1}".format(el[0], el[1]))
+# 3. What is the out put of this code?
+# print("two of the cities in the list are {0} and {1}".format(el[0], el[1]))
 
 superdict = {
     '1': {
@@ -87,6 +87,16 @@ superdict = {
     }
 }
 
+print(superdict)
+print(superdict['1']['city'])
+print(superdict['2']['city'])
+print(superdict['3']['city'])
+print(superdict['4']['city'])
+print(superdict['5']['city'])
+print(superdict['6']['city'])
+
+#print("two of the cities in the list are {0} and {1}".format(el[0], el[1]))
+
 # Exercise 10: Use for, .split and if to create a statement that will print out words that start with 's'
 st = 'Print only the words that start with s in this sentence'
 for word in st.split():
@@ -105,16 +115,20 @@ print(mylist)
 st = 'Print every word in this sentence that has an even number of letters'
 for word in st.split():
     if len(word) % 2 == 0:
-        print('even!')
-    else:
-        print(word)
+        print(f"{word} is even!")
+    #else:
+    #    print(word)
 
 
-# Exercise 14:
-# See exercises_set1
+# Exercise 14: Write a program that prints the integers from 1 to 100. But for multiples of three, print "Fizz"
+# # instead of the number, and for multiples of five print "Buzz". For numbers which are multiples of three and
+# # five, print "FizzBuzz".
+# See exercises_set1 no 20
 
-# Exercise 15:
-# See exercises_set1
+# Exercise 15:Use List Comprehension to create a list of the first letters of every word in the string below;
+st = 'Create a list of the first letters of every word in this string'
+mylist = [word[0] for word in st.split()]
+print(mylist)
 
 # Exercise 16: Define a function called is_even that takes in one argument, and returns True if the passed-in
 # value is even, False if it is not.
@@ -173,14 +187,13 @@ print(old_macdonald('macdonald'))
 # -> has_33([1,3,1,3]) --> False
 # -> has_33([3,1,3]) --> False
 def has_33(mylist):
-    pass
-#    for num in range(len(mylist)):
-#        if mylist[num] == 3 and mylist[num + 1] == 3:
-#            print("Twins")
-#        else:
-#            print("Tall")
+    for num in range(len(mylist) - 1):
+        if (mylist[num] == 3) and (mylist[num + 1] == 3):
+            return True
+    else:
+        return False
 
-#print(has_33([1,3,1,1]))
+print(has_33([1,3,3]))
 
 # Exercise 22: PAPER DOLL: Given a string, return a string where for every character in the original
 # there are three characters.
@@ -220,10 +233,22 @@ print(blackjack(11,11,11))
 # with a 6 and extending to the next 9 (every 6 will be followed by at least one 9). Return 0 for no numbers.
 # -> summer_69([1, 3, 5]) --> 9
 # -> summer_69([4, 5, 6, 7, 8, 9]) --> 9
-# -> summer_69([2, 1, 6, 9, 11]) --> 9
+# -> summer_69([2, 1, 6, 9, 11]) --> 14
 def summer_69(arr):
-    pass
+    new_list = []
+    for num in arr:
+        if num < 6 or num > 9:
+           new_list.append(num)
+        #else:
+         #   num = 0
+         #   new_list.append(num)
+    return sum(new_list)
 
+print(summer_69([1, 3, 5]))
+print(summer_69([4, 5, 6, 7, 8, 9]))
+print(summer_69([2, 1, 6, 9, 11]))
+print(summer_69([11, 10, 11, 10, 11]))
+print(summer_69([6, 7, 8, 9, 6]))
 
 # Exercise 25: SPY GAME: Write a function that takes in a list of integers and returns True if it contains
 # 007 in order
@@ -231,8 +256,18 @@ def summer_69(arr):
 # -> spy_game([1,0,2,4,0,5,7]) --> True
 # -> spy_game([1,7,2,0,4,5,0]) --> False
 def spy_game(nums):
-    pass
+    nulist = []
+    for num in range(len(nums)):
+        if nums[num] == 0:
+            nulist.append(nums[num])
+        elif nums[num] == 7:
+            nulist.append(nums[num])
+    print(nulist)
+    return nulist == [0, 0, 7]
 
+print(spy_game([1,2,4,0,0,7,5]))
+print(spy_game([1,0,2,4,0,5,7]))
+print(spy_game([1,7,2,0,4,5,0]))
 
 # Exercise 26: You are driving a little too fast, and a police officer stops you. Write a function to
 # return one of 3 possible results: "No ticket", "Small ticket", or "Big Ticket". If your speed is 60
@@ -253,7 +288,20 @@ print(speed_check(86,True))
 
 # Exercise 27: Write a Python function that accepts a string and calculates the number of uppercase
 # and lowercase letters
-# See exercises_set1
+st = "Hello Mr. Rogers, how are you this fine Tuesday"
+# Output should be:
+# Uppercase: 4
+# Lowercase: 33
+
+Uppercase = 0
+Lowercase = 0
+for num in range(len(st)):
+    if st[num].isupper():
+        Uppercase += 1
+    elif st[num].islower():
+        Lowercase += 1
+print(Uppercase)
+print(Lowercase)
 
 
 # Exercise 28: Write a Python function that takes a list and returns a new list with unique elements of
@@ -295,32 +343,35 @@ print(ispangram("The quick brown fox jumps over the lazy dog"))
 #         return x**2
 #     else:
 #         return x+3
+test = lambda x : x**2 if x%2==0 else x+3
+print(test(7))
 
 
  # Exercise 32: Use lambda function to filter out words that start with letter 's' in seq:
- # seq = ['soup', 'dog', 'salad', 'cat', 'great']
+seq = ['soup', 'dog', 'salad', 'cat', 'great']
  # Hint: (use filter with lambda)
-
+print(list(filter(lambda word : word[0]=='s', seq)))
 
 # Exercise 33:
 # Using a lambda function print out the first letters of the words in the following list
-# names = ['Andy', 'Eve', 'Sally']
+names = ['Andy', 'Eve', 'Sally']
 # Hint ( use map with lambda)
-
+print(list(map(lambda word : word[0], names)))
 
 # Exercise 34:
 # What is the output of this function. ( try and do this mentally)
-# def func(alfa):
-#    beta = list(map(lambda x:x-1, alfa))
-#    return len(list(filter(lambda y:y%3==0, beta)))
-# print(func(range(1,10)))
+def func(alfa):
+    beta = list(map(lambda x:x-1, alfa))
+    return len(list(filter(lambda y:y%3==0, beta)))
+print(func(range(1,10)))
 
 
 # Exercise 35:
 # What is the output of this code: ( do this mentally—first)
-# what = """1"""
-# up = '1'
-# print(what is up)
+what = """1"""
+up = '1'
+print(f"WHAT is equal to {what} while UP is equal to {up}")
+print(what is up)
 
 
 # Exercise 36:
@@ -344,8 +395,10 @@ print(set(b)- set(a))
 
 
 # Exercise 38:
-# a, b, *c = [1,2,3,4,5,6,7,8,9]
+a, b, *c = [1,2,3,4,5,6,7,8,9]
 # What is the value of a, b and c
+print(f"a = {a} while b = {b}")
+print(f"c = {c}")
 
 # Exercise 39:
 # What is the output of this code ( try it mentally first)
@@ -356,5 +409,17 @@ print(d)
 # Exercise 40:
 # What is the output of this code
 x = [1,[2,[3,4],5],6]
-print(x[1][1][1])
-print(len(x))
+print(f"The value of x[1][1][1] is {x[1][1][1]}")
+print(f"The length of x is {len(x)}")
+
+# Exercise 41: This is a recent coding interview by google.
+# Given a list of numbers and a number k, return whether any two numbers from the list add up to k.
+# For example, given [10, 15, 3, 7] and k of 17, return true since 10 + 7 is 17.
+def Give_up(nums, k):
+    for n in nums:
+        for l in nums:
+            if n + l == k:
+                return True
+        return False
+
+print(Give_up([10, 15, 3, 7], 17))
